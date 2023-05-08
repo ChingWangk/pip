@@ -15,21 +15,28 @@ struct IF_ID {
 };
 
 struct ID_EX {
-    int dest;
-    int r1;
-    int r2;
+    int rd;
+    int reg1;
+    int reg2;
+    int val1;
+    int val2;
+    string label;
+    int imm;
     int address;
     int offset;
 
     int prog_cnt;
     ARM_OPC opcode = OPC_INVALID;
     ARM_INSTR_TYPE type = INSTR_TYPE_INVALID;
+    Instruction recent_instr;
 };
 
 struct EX_MEM {
-    int val_arith;
+    int alu_output;
     int val_address;
-    int dest;
+    int val1;
+    int val2;
+    int rd;
     bool zero;
 
     int prog_cnt;
@@ -38,8 +45,8 @@ struct EX_MEM {
 };
 
 struct MEM_WB {
-    int val_data;
-    int dest;
+    int alu_output;
+    int rd;
 
     int prog_cnt;
     ARM_OPC opcode = OPC_INVALID;
@@ -47,3 +54,4 @@ struct MEM_WB {
 };
 
 #endif // PIPELINE_SIM_H
+
