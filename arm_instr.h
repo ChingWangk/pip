@@ -33,7 +33,7 @@ static const string ARM_OPC_NAME[14] = {
 
 typedef enum {
     OPC_TYPE_INVALID = 0,
-    OPC_TYPE_ADD_REG, OPC_TYPE_ADD_IMM, OPC_TYPE_ADD_SP_IMM,
+    OPC_TYPE_ADD_REG, OPC_TYPE_ADD_IMM=50, OPC_TYPE_ADD_SP_IMM,
     OPC_TYPE_SUB_REG, OPC_TYPE_SUB_IMM, OPC_TYPE_SUB_SP_IMM,
     OPC_TYPE_MUL_REG, OPC_TYPE_MUL_IMM,
     OPC_TYPE_MOV_REG, OPC_TYPE_MOV_IMM, OPC_TYPE_MOV_PC_LR,
@@ -49,15 +49,21 @@ typedef enum {
     INSTR_TYPE_INVALID = 0,
     INSTR_TYPE_REG,
     INSTR_TYPE_IMM,
-    INSTR_TYPE_EXTRA
+    INSTR_TYPE_EXTRA,
+    LOAD,
+    R_TYPE,
+    I_TYPE
 } ARM_INSTR_TYPE;
 
 struct Instruction {
     ARM_OPC opcode = OPC_INVALID;
     ARM_INSTR_TYPE type = INSTR_TYPE_INVALID;
-    int dest = -1;
-    int operand1 = -1;
-    int operand2 = -1;
+    int rd = -1;
+    int reg1 = -1;
+    int reg2 = -1;
+    string label="";
+    int imm=0;
+    
 };
 
 typedef enum {
