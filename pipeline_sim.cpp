@@ -389,6 +389,7 @@ void MEM() {
             Register_MEM_WB.prog_cnt = Register_EX_MEM.prog_cnt;
             Register_MEM_WB.opcode = Register_EX_MEM.opcode;
             Register_MEM_WB.type = Register_EX_MEM.type;
+            break;
 
         case OPC_TYPE_STR_REG:
         case OPC_TYPE_STR_REG_OFFSET:
@@ -406,6 +407,10 @@ void MEM() {
             Register_MEM_WB.prog_cnt = Register_EX_MEM.prog_cnt;
             Register_MEM_WB.opcode = Register_EX_MEM.opcode;
             Register_MEM_WB.type = Register_EX_MEM.type;
+            break;
+
+        case OPC_EXIT:
+            shut_down = true;
             break;
 
         default:
